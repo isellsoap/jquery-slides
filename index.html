@@ -1,0 +1,402 @@
+<!doctype html>  
+<html lang="de">
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery – Überblick, Basiskonzepte, Beispiele, Plugins</title>
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|PT+Serif:700' rel='stylesheet'>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+		<link rel="canonical" href="http://frncs.co/jquery/">
+	</head>
+	<body>
+		<div id="reveal">
+			
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+			
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				
+				<section class="start center">
+					<h1 style="margin-top: .5em;">jQuery</h1>
+					<p>Überblick, Basiskonzepte, Beispiele, Plugins</p>
+				</section>
+				
+				<section>
+					<h2>Allgemein</h2>
+					<ul>
+						<li>populärste JavaScript-Bibliothek</li>
+						<li>open source (MIT- oder GPL-Lizenz)</li>
+						<li>sehr gute, umfassende Dokumentation</li>
+						<li>vereinfacht Interaktion zwischen HTML und JavaScript (DOM, Animationen, Effekte, Events, AJAX, …)</li>
+					</ul>
+				</section>
+				
+				<section>
+					
+					<figure style="margin-top: 2em">
+						<a href="http://www.google.com/trends/?q=dojo+javascript,+jquery+javascript,+yui+javascript,+prototype+javascript,+mootools+javascript" class="image"><img src="assets/img/google-trends.png" alt="Google Trends"></a>
+						<figcaption>Google Trends, Juni 2012</figcaption>
+					</figure>
+				
+				</section>
+				
+				<section>
+					
+					<figure style="margin-top: 2em">
+						<a href="http://w3techs.com/technologies/overview/javascript_library/all" class="image"><img src="assets/img/w3techs.png" alt="W3Techs.com"></a>
+						<figcaption>W3Techs.com, Juni 2012</figcaption>
+					</figure>
+				
+				</section>
+				
+				<section>
+				
+					<figure>
+						<a href="http://www.flickr.com/photos/webstock06/4371748843/" class="image"><img src="assets/img/john-resig.jpg" alt="John Resig"></a>
+					</figure>
+					<ul style="margin-top: 1em">
+						<li>erste Überlegungen und Hinweise im <a href="http://ejohn.org/blog/selectors-in-javascript/">August 2005</a></li>
+						<li>veröffentlicht im <a href="http://ejohn.org/blog/barcampnyc-wrap-up/">Januar 2006</a> von John Resig <br>auf dem BarCamp NYC</li>
+					</ul>
+				
+				</section>
+				
+				<section>
+					<div id="chart"></div>
+					<ul>
+						<li>durchschnittlich alle zwei Monate neuer Release</li>
+						<li>aktuelle Version: <strong>1.7.2</strong> (Juni 2012)</li>
+					</ul>
+				</section>
+				
+				<section>
+				
+					<figure style="margin-top: 2em">
+						<a href="https://github.com/SirPepe/Browserfaces" class="image"><img src="assets/img/trollfaces.png" alt="Browser Trollfaces"></a>
+					</figure>
+					<ul style="margin-top: .5em">
+						<li>abstrahiert browserspezifische Eigenheiten</li>
+						<li>
+							Browser-Support:
+							<ul>
+								<li>Firefox 2+</li>
+								<li>IE 6+</li>
+								<li>Safari 3+</li>
+								<li>Opera 10.6+</li>
+								<li>Chrome 8+</li>
+							</ul>
+						</li>
+					</ul>
+				
+				</section>
+				
+				<section>
+					<p>AJAX-Beispiel aus 1. Übung</p>
+					<pre class="code" contenteditable>function doSomeAjax() {
+
+    var xmlhttp;
+
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else { // support for older IE versions
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+        }
+    }
+
+    xmlhttp.open("GET", "info.txt", true);
+    xmlhttp.send();
+
+}</pre>
+				</section>
+				
+				<section>
+					<p style="text-align: center"><a class="image" href="http://www.quickmeme.com/meme/3pkcyl/"><img src="assets/img/meme.jpg" alt="Inception meme" style="margin: -40px 0 0"></a></p>
+				</section>
+				
+				<section>
+					<h2>Basiskonzepte</h2>
+					<ol>
+						<li>jQuery-Objekt</li>
+						<li><code>ready</code>-Event</li>
+						<li>Methoden</li>
+						<li>Method Chaining</li>
+					</ol>
+				</section>
+				<section>
+					<h3>1. jQuery-Objekt</h3>
+					<pre class="alt" contenteditable>$("div").addClass("test");</pre>
+					<ul>
+						<li class="fragment">ganz allgemein: <code>$</code> ist die Funktion, die das jQuery-Objekt zurückgibt (synonym: <code>jQuery</code>)</li>
+						<li class="fragment"><code>"div"</code> ist ein CSS-Selektor</li>
+						<li class="fragment"><code>$("div")</code> erzeugt jQuery-Objekt, das auf alle gefundenen Elemente im DOM-Baum zeigt</li>
+						<li class="fragment"><code>addClass(…)</code> verändert alle <code>div</code>s</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h3>2. <code>ready</code>-Event</h3>
+					<ul>
+						<li>wird ausgeführt, wenn HTML-Code fertig geladen ist</li>
+						<li>Skript greift so schnell wie möglich auf DOM-Baum zu</li>
+						<li>keine Verzögerung durch Bilder, iFrames, Plugins, etc. (im Gegensatz zum <code>load</code>-Event)</li>
+						<li>essenzielles Muster für <i>unobtrusive DOM scripting</i></li>
+						<li>Empfehlung: Code damit umschließen</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h3>2. <code>ready</code>-Event</h3>
+					<pre class="alt">$(document).ready(function() { 
+  // jQuery code 
+});</pre>
+					<div class="fragment">
+						<p>Kurzschreibweise (synonym):</p>
+						<pre class="alt">$(function() {
+  // jQuery code
+});</pre>
+					</div>
+				</section>
+				
+				<section>
+					<h3>3. Methoden</h3>
+					<ul>
+						<li>DOM-Traversierung<br><code>find()</code>, <code>prevAll()</code>, <code>next()</code>, <code>siblings()</code>, …</li>
+						<li class="fragment">DOM-Manipulation<br><code>before()</code>, <code>after()</code>, <code>appendTo()</code>, <code>val()</code>, …</li>
+						<li class="fragment">Effekte<br><code>show()</code>, <code>slideDown()</code>, <code>hide()</code>, <code>fadeIn()</code>, …</li>
+						<li class="fragment">Events<br><code>bind()</code>, <code>change()</code>, <code>click()</code>, <code>mousedown()</code>, …</li>
+						<li class="fragment">…</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h3>4. Method Chaining</h3>
+					<ul>
+						<li>mehrere Methodenaufrufe pro jQuery-Objekt möglich</li>
+						<li>Methoden, die keinen Rückgabewert haben, geben jQuery-Objekt für weitere Aktionen zurück</li>
+						<li>Ziel: wortreiche DOM-API sinnvoller, effektiver, kompakter zur Verfügung zu stellen (DRY-Prinzip)</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h3>4. Method Chaining</h3>
+					<pre class="alt2" contenteditable>var node = document.createElement("div");
+node.innerHTML = "foo";
+node.style.background = "red";
+document.body.appendChild(node);</pre>
+<div class="fragment"><p>vs.</p>
+<pre class="alt2" contenteditable>$("&lt;div&gt;&lt;/div&gt;")
+  .html("foo")
+  .css("background", "red")
+  .appendTo(document.body);</pre></div>
+				</section>
+				
+				<section>
+					<h2>Beispiele</h2>
+					<ol>
+						<li>Traversierung mit Method Chaining</li>
+						<li>Manipulation mit <code>after()</code></li>
+						<li>Effekt mit <code>slideToggle()</code></li>
+						<li>AJAX mit <code>load()</code></li>
+					</ol>
+				</section>
+				
+				<section id="runBackground">
+					<p>Traversierung mit Method Chaining:</p>
+					<pre class="alt small" contenteditable>$("button") 
+  .parent().css("background", "red") 
+  .siblings().css("background", "green");</pre>
+    <ul>
+			<li><button class="run">Klick mich</button></li>
+			<li>Lorem</li>
+			<li>ipsum</li>
+			<li>dolor</li>
+		</ul>
+				</section>
+				
+				<section id="runTargetBlank">
+					<p>Manipulation mit <code>after()</code>:</p>
+					<pre class="alt small" contenteditable>$("a[target=_blank]").after(" – extern");</pre>
+					<p><button class="run">Klick mich</button></p>
+    <ul>
+			<li><a href="http://google.com" target="_blank">google.com</a></li>
+			<li><a href="http://bing.com" target="_blank">bing.com</a></li>
+			<li><a href="http://yahoo.com" target="_blank">yahoo.com</a></li>
+		</ul>
+				</section>
+				
+				<section id="runSlideToggle">
+					<p>Effekt mit <code>slideToggle()</code>:</p>
+					<pre class="alt small run">$("a.menu").click(function() { 
+  $(this).next().slideToggle("slow"); 
+  return false; 
+});</pre>
+    <ul>
+			<li><a href="#menu1" class="menu">Menu 1</a> <ul><li>Lorem</li><li>ipsum</li></ul></li>
+			<li><a href="#menu2" class="menu">Menu 2</a> <ul><li>dolor</li></ul></li>
+		</ul>
+				</section>
+				
+				<section id="runAjax">
+					<p>AJAX mit <code>load()</code>:</p>
+					<pre class="alt small" contenteditable>$("div.box").load("info.txt");</pre>
+					<p><button class="run">Klick mich</button></p>
+					<div class="box">
+						<p>Diese Box wird sich bald ändern.</p>
+					</div>
+				</section>
+				<section>
+					<h2>Plugins</h2>
+					<ul>
+						<li>sehr wahrscheinlich, dass für gewünschte Funktionalität bereits ein Plugin existiert</li>
+						<li>Tipp: »einfach googeln«™ und Rad nicht neu erfinden</li>
+						<li>blindes <i lang="en">copy and paste</i> natürlich trotzdem nicht empfehlenswert (Quantität ≠ Qualität)</li>
+					</ul>
+					
+				</section>
+				<section>
+					<p style="text-align: center"><a class="image" href="http://jqueryui.com/"><img src="assets/img/jqueryui.png" alt="jQuery UI logo"></a></p>
+					<ul>
+						<li>Gestaltung und Funktionalität der Benutzeroberfläche</li>
+						<li>Interaktion, Effekte, Widgets, Themes, …</li>
+						<li>sehr leicht in Projekt integrierbar und erweiterbar</li>
+					</ul>
+				</section>
+				
+				<section>
+					<p style="text-align: center"><a class="image" href="http://jquerypp.com/"><img src="assets/img/jquerypp.png" alt="jQuery++ screenshot"></a></p>
+				</section>
+				
+				<section>
+					<p style="text-align: center"><a class="image" href="http://isotope.metafizzy.co/"><img src="assets/img/isotope.png" alt="Isotope screenshot"></a></p>
+				</section>
+				
+				<section>
+					<h2>jQuery-Links</h2>
+					<ul class="linksAtEnd1">
+						<li><a href="http://jquery.com/">jQuery-Website</a></li>
+						<li><a href="http://api.jquery.com/">jQuery-API</a></li>
+						<li><a href="http://docs.jquery.com/Main_Page">jQuery-Dokumentation</a></li>
+						<li><a href="http://docs.jquery.com/Tutorials">jQuery-Tutorials</a></li>
+						<li>jQuery bei <a href="https://twitter.com/#!/jquery">Twitter</a> und <a href="https://github.com/jquery/jquery">GitHub</a></li>
+						<li><a href="http://jqueryui.com/">jQuery UI</a></li>
+						<li><a href="http://sizzlejs.com/">Selektor-Engine Sizzle</a> (nativer Bestandteil von jQuery)</li>
+						<li><a href="http://www1.inf.tu-dresden.de/~s5219191/jQuery/">jQuery-Cheatsheet</a></li>
+					</ul>
+				</section>
+				
+				<section>
+					<h3>Sonstige Links und Quellen</h3>
+					<ul class="linksAtEnd">
+						<li>John Resig: <a href="http://ejohn.org/apps/workshop/intro/">»Introduction to jQuery«</a> <span class="twitter">(<a href="https://twitter.com/#!/jeresig">@jeresig</a>)</span></li>
+						<li>Mathias Schäfer: <a href="http://molily.de/weblog/domcontentloaded">»DOMContentLoaded and stylesheets«</a> und <br><a href="http://molily.de/weblog/ecmascript5">»Methodenketten und Fluent Interfaces mit ECMAScript 5 und Harmony«</a> <span class="twitter">(<a href="https://twitter.com/#!/molily">@molily</a>)</span></li>
+						<li>Gerrit van Aaken: <a href="http://www.webkrauts.de/2006/12/02/was-ist-dom-scripting/">»Was ist DOM-Scripting?«</a> <span class="twitter">(<a href="https://twitter.com/#!/gerritvanaaken">@gerritvanaaken</a>)</span></li>
+						<li>Marc Grabanski: <a href="http://www.slideshare.net/1Marc/jquery-essentials">»jQuery Essentials«</a> <span class="twitter">(<a href="https://twitter.com/#!/1marc">@1marc</a>)</span></li>
+						<li>Ryan Smith und Kenny Rosenberg: <a href="http://www.slideshare.net/ryanlsmith/jquery-its-a-library-not-a-framework">»jQuery: It’s a library, not a framework«</a> <span class="twitter">(<a href="https://twitter.com/#!/ryanlsmith">@ryanlsmith</a> und <a href="https://twitter.com/#!/kennyrosenberg">@kennyrosenberg</a>)</span></li>
+						<li>Rodney Rehm: <a href="http://blog.rodneyrehm.de/archives/13-jQuery-The-Little-Things.html">»jQuery – The Little Things«</a> und <a href="http://blog.rodneyrehm.de/archives/11-jQuery-Hooks.html">»jQuery Hooks«</a> <span class="twitter">(<a href="https://twitter.com/#!/rodneyrehm">@rodneyrehm</a>)</span></li>
+						<li>Paul Irish: <a href="http://paulirish.com/2009/perf/">»jQuery Anti-Patterns for Performance«</a> und <a href="http://paulirish.com/">andere Artikel und Ressourcen</a> <span class="twitter">(<a href="https://twitter.com/#!/paul_irish">@paul_irish</a>)</span></li>
+						<li>Sam Deering: <a href="http://coding.smashingmagazine.com/2012/05/31/50-jquery-function-demos-for-aspiring-web-developers/">»Useful jQuery Function Demos For Your Projects«</a> <span class="twitter">(<a href="https://twitter.com/#!/jquery4u">@jquery4u</a>)</span></li>
+						<li>Devrim Vardar: <a href="http://www.webresourcesdepot.com/28-high-quality-jquery-plugins-for-building-responsive-websites/">»28 High-Quality jQuery Plugins For Building Responsive Websites«</a> <span class="twitter">(<a href="https://twitter.com/#!/stildv">@stildv</a>)</span></li>
+						<li>Wikipedia-Artikel: <a href="http://en.wikipedia.org/wiki/JQuery">jQuery</a>, <a href="http://en.wikipedia.org/wiki/Fluent_interface">Fluent Interface</a>, <a href="http://en.wikipedia.org/wiki/Method_chaining">Method Chaining</a> und <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself"><abbr>DRY</abbr></a></li>
+					</ul>
+				</section>
+				
+				<section>
+					<p class="linkToSlides"><a href="http://frncs.co/jquery/">http://frncs.co/jquery/</a></p>
+				</section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+		<div id="indicator1"></div>
+		<div id="indicator2"></div>
+		
+		<script src="lib/jquery-1.7.2.min.js"></script>
+		<script src="lib/highcharts.js"></script>
+		<script src="lib/default.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+		
+		<script src="lib/classList.js"></script>
+		
+		
+		
+		<script>
+			// Parse the query string into a key/value object
+			var query = {};
+			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+			} );
+
+			// Fires when a slide with data-state=customevent is activated
+			Reveal.addEventListener( 'customevent', function() {
+				alert( '"customevent" has fired' );
+			} );
+
+			// Fires each time a new slide is activated
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				// event.indexh & event.indexv
+			} );
+
+			Reveal.initialize({
+				// Display controls in the bottom right corner
+				controls: false,
+
+				// Display a presentation progress bar
+				progress: true,
+
+				// If true; each slide will be pushed to the browser history
+				history: true,
+
+				// Loops the presentation, defaults to false
+				loop: false,
+
+				// Flags if mouse wheel navigation should be enabled
+				mouseWheel: false,
+
+				// Apply a 3D roll to links on hover
+				rollingLinks: false,
+
+				// UI style
+				theme: query.theme || 'default', // default/neon
+
+				// Transition style
+				transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+			});
+
+			
+			
+		
+			
+		</script>
+<!-- Piwik --> 
+		<script type="text/javascript">
+		var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.frncs.co/" : "http://piwik.frncs.co/");
+		document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+		</script><script type="text/javascript">
+		try {
+		var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+		piwikTracker.trackPageView();
+		piwikTracker.enableLinkTracking();
+		} catch( err ) {}
+		</script><noscript><p><img src="http://piwik.frncs.co/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+		<!-- End Piwik Tracking Code -->
+	</body>
+</html>
