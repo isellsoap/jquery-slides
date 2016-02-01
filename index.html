@@ -1,9 +1,9 @@
-<!doctype html>  
+<!doctype html>
 <html lang="de">
 	<head>
 		<meta charset="utf-8">
 		<title>jQuery – Überblick, Basiskonzepte, Beispiele, Plugins</title>
-		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|PT+Serif:700' rel='stylesheet'>
+		<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|PT+Serif:700' rel='stylesheet'>
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
@@ -11,18 +11,18 @@
 	</head>
 	<body>
 		<div id="reveal">
-			
+
 			<!-- Used to fade in a background when a specific slide state is reached -->
 			<div class="state-background"></div>
-			
+
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				
+
 				<section class="start center">
 					<h1 style="margin-top: .5em;">jQuery</h1>
 					<p>Überblick, Basiskonzepte, Beispiele, Plugins</p>
 				</section>
-				
+
 				<section>
 					<h2>Allgemein</h2>
 					<ul>
@@ -32,27 +32,27 @@
 						<li>vereinfacht Interaktion zwischen HTML und JavaScript (DOM, Animationen, Effekte, Events, AJAX, …)</li>
 					</ul>
 				</section>
-				
+
 				<section>
-					
+
 					<figure style="margin-top: 2em">
 						<a href="http://www.google.com/trends/?q=dojo+javascript,+jquery+javascript,+yui+javascript,+prototype+javascript,+mootools+javascript" class="image"><img src="assets/img/google-trends.png" alt="Google Trends"></a>
 						<figcaption>Google Trends, Juni 2012</figcaption>
 					</figure>
-				
+
 				</section>
-				
+
 				<section>
-					
+
 					<figure style="margin-top: 2em">
 						<a href="http://w3techs.com/technologies/overview/javascript_library/all" class="image"><img src="assets/img/w3techs.png" alt="W3Techs.com"></a>
 						<figcaption>W3Techs.com, Juni 2012</figcaption>
 					</figure>
-				
+
 				</section>
-				
+
 				<section>
-				
+
 					<figure>
 						<a href="http://www.flickr.com/photos/webstock06/4371748843/" class="image"><img src="assets/img/john-resig.jpg" alt="John Resig"></a>
 					</figure>
@@ -60,9 +60,9 @@
 						<li>erste Überlegungen und Hinweise im <a href="http://ejohn.org/blog/selectors-in-javascript/">August 2005</a></li>
 						<li>veröffentlicht im <a href="http://ejohn.org/blog/barcampnyc-wrap-up/">Januar 2006</a> von John Resig <br>auf dem BarCamp NYC</li>
 					</ul>
-				
+
 				</section>
-				
+
 				<section>
 					<div id="chart"></div>
 					<ul>
@@ -70,9 +70,9 @@
 						<li>aktuelle Version: <strong>1.7.2</strong> (Juni 2012)</li>
 					</ul>
 				</section>
-				
+
 				<section>
-				
+
 					<figure style="margin-top: 2em">
 						<a href="https://github.com/SirPepe/Browserfaces" class="image"><img src="assets/img/trollfaces.png" alt="Browser Trollfaces"></a>
 					</figure>
@@ -89,9 +89,9 @@
 							</ul>
 						</li>
 					</ul>
-				
+
 				</section>
-				
+
 				<section>
 					<p>AJAX-Beispiel aus 1. Übung</p>
 					<pre class="code" contenteditable>function doSomeAjax() {
@@ -115,11 +115,11 @@
 
 }</pre>
 				</section>
-				
+
 				<section>
 					<p style="text-align: center"><a class="image" href="http://www.quickmeme.com/meme/3pkcyl/"><img src="assets/img/meme.jpg" alt="Inception meme" style="margin: -40px 0 0"></a></p>
 				</section>
-				
+
 				<section>
 					<h2>Basiskonzepte</h2>
 					<ol>
@@ -139,7 +139,7 @@
 						<li class="fragment"><code>addClass(…)</code> verändert alle <code>div</code>s</li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<h3>2. <code>ready</code>-Event</h3>
 					<ul>
@@ -150,11 +150,11 @@
 						<li>Empfehlung: Code damit umschließen</li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<h3>2. <code>ready</code>-Event</h3>
-					<pre class="alt">$(document).ready(function() { 
-  // jQuery code 
+					<pre class="alt">$(document).ready(function() {
+  // jQuery code
 });</pre>
 					<div class="fragment">
 						<p>Kurzschreibweise (synonym):</p>
@@ -163,7 +163,7 @@
 });</pre>
 					</div>
 				</section>
-				
+
 				<section>
 					<h3>3. Methoden</h3>
 					<ul>
@@ -174,7 +174,7 @@
 						<li class="fragment">…</li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<h3>4. Method Chaining</h3>
 					<ul>
@@ -183,7 +183,7 @@
 						<li>Ziel: wortreiche DOM-API sinnvoller, effektiver, kompakter zur Verfügung zu stellen (DRY-Prinzip)</li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<h3>4. Method Chaining</h3>
 					<pre class="alt2" contenteditable>var node = document.createElement("div");
@@ -196,7 +196,7 @@ document.body.appendChild(node);</pre>
   .css("background", "red")
   .appendTo(document.body);</pre></div>
 				</section>
-				
+
 				<section>
 					<h2>Beispiele</h2>
 					<ol>
@@ -206,11 +206,11 @@ document.body.appendChild(node);</pre>
 						<li>AJAX mit <code>load()</code></li>
 					</ol>
 				</section>
-				
+
 				<section id="runBackground">
 					<p>Traversierung mit Method Chaining:</p>
-					<pre class="alt small" contenteditable>$("button") 
-  .parent().css("background", "red") 
+					<pre class="alt small" contenteditable>$("button")
+  .parent().css("background", "red")
   .siblings().css("background", "green");</pre>
     <ul>
 			<li><button class="run">Klick mich</button></li>
@@ -219,7 +219,7 @@ document.body.appendChild(node);</pre>
 			<li>dolor</li>
 		</ul>
 				</section>
-				
+
 				<section id="runTargetBlank">
 					<p>Manipulation mit <code>after()</code>:</p>
 					<pre class="alt small" contenteditable>$("a[target=_blank]").after(" – extern");</pre>
@@ -230,19 +230,19 @@ document.body.appendChild(node);</pre>
 			<li><a href="http://yahoo.com" target="_blank">yahoo.com</a></li>
 		</ul>
 				</section>
-				
+
 				<section id="runSlideToggle">
 					<p>Effekt mit <code>slideToggle()</code>:</p>
-					<pre class="alt small run">$("a.menu").click(function() { 
-  $(this).next().slideToggle("slow"); 
-  return false; 
+					<pre class="alt small run">$("a.menu").click(function() {
+  $(this).next().slideToggle("slow");
+  return false;
 });</pre>
     <ul>
 			<li><a href="#menu1" class="menu">Menu 1</a> <ul><li>Lorem</li><li>ipsum</li></ul></li>
 			<li><a href="#menu2" class="menu">Menu 2</a> <ul><li>dolor</li></ul></li>
 		</ul>
 				</section>
-				
+
 				<section id="runAjax">
 					<p>AJAX mit <code>load()</code>:</p>
 					<pre class="alt small" contenteditable>$("div.box").load("info.txt");</pre>
@@ -258,7 +258,7 @@ document.body.appendChild(node);</pre>
 						<li>Tipp: »einfach googeln«™ und Rad nicht neu erfinden</li>
 						<li>blindes <i lang="en">copy and paste</i> natürlich trotzdem nicht empfehlenswert (Quantität ≠ Qualität)</li>
 					</ul>
-					
+
 				</section>
 				<section>
 					<p style="text-align: center"><a class="image" href="http://jqueryui.com/"><img src="assets/img/jqueryui.png" alt="jQuery UI logo"></a></p>
@@ -268,15 +268,15 @@ document.body.appendChild(node);</pre>
 						<li>sehr leicht in Projekt integrierbar und erweiterbar</li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<p style="text-align: center"><a class="image" href="http://jquerypp.com/"><img src="assets/img/jquerypp.png" alt="jQuery++ screenshot"></a></p>
 				</section>
-				
+
 				<section>
 					<p style="text-align: center"><a class="image" href="http://isotope.metafizzy.co/"><img src="assets/img/isotope.png" alt="Isotope screenshot"></a></p>
 				</section>
-				
+
 				<section>
 					<h2>jQuery-Links</h2>
 					<ul class="linksAtEnd1">
@@ -290,7 +290,7 @@ document.body.appendChild(node);</pre>
 						<li><a href="http://www1.inf.tu-dresden.de/~s5219191/jQuery/">jQuery-Cheatsheet</a></li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<h3>Sonstige Links und Quellen</h3>
 					<ul class="linksAtEnd">
@@ -306,7 +306,7 @@ document.body.appendChild(node);</pre>
 						<li>Wikipedia-Artikel: <a href="http://en.wikipedia.org/wiki/JQuery">jQuery</a>, <a href="http://en.wikipedia.org/wiki/Fluent_interface">Fluent Interface</a>, <a href="http://en.wikipedia.org/wiki/Method_chaining">Method Chaining</a> und <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself"><abbr>DRY</abbr></a></li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<p class="linkToSlides"><a href="http://frncs.co/jquery/">http://frncs.co/jquery/</a></p>
 				</section>
@@ -322,22 +322,22 @@ document.body.appendChild(node);</pre>
 
 			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
 			<div class="progress"><span></span></div>
-			
+
 		</div>
 		<div id="indicator1"></div>
 		<div id="indicator2"></div>
-		
+
 		<script src="lib/jquery-1.7.2.min.js"></script>
 		<script src="lib/highcharts.js"></script>
 		<script src="lib/default.js"></script>
 		<script src="js/reveal.js"></script>
 
 		<!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
-		
+
 		<script src="lib/classList.js"></script>
-		
-		
-		
+
+
+
 		<script>
 			// Parse the query string into a key/value object
 			var query = {};
@@ -381,22 +381,10 @@ document.body.appendChild(node);</pre>
 				transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
 			});
 
-			
-			
-		
-			
+
+
+
+
 		</script>
-<!-- Piwik --> 
-		<script type="text/javascript">
-		var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.frncs.co/" : "http://piwik.frncs.co/");
-		document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-		</script><script type="text/javascript">
-		try {
-		var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
-		piwikTracker.trackPageView();
-		piwikTracker.enableLinkTracking();
-		} catch( err ) {}
-		</script><noscript><p><img src="http://piwik.frncs.co/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
-		<!-- End Piwik Tracking Code -->
 	</body>
 </html>
